@@ -1,14 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-app.use(cors(
-    {
-        origin: '*'
-    }
-));
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-})
+app.use(cors());
 const MongoClient = require('mongodb').MongoClient;
 const dotenv = require('dotenv');
 dotenv.config();
