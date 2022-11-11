@@ -43,7 +43,7 @@ function replace_name(var_id)
 }
 function generate()
 {
-    fetch('https://lazy-ruby-mackerel-hem.cyclic.app/find-by-name?name=').then((response) => {
+    fetch('https://lazy-ruby-mackerel-hem.cyclic.app/find-by-name?name=',{mode: 'no-cors',}).then((response) => {
         return response.json();
     }).then((data) => {
         console.log(data);
