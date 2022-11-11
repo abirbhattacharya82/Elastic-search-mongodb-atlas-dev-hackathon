@@ -1,8 +1,10 @@
 const express=require('express');
 const app=express();
-import { MongoClient } from 'mongodb';
-
-const connection_url=`mongodb+srv://<username>:<password>@cluster0.a42g8hw.mongodb.net/?retryWrites=true&w=majority`
+const MongoClient = require('mongodb').MongoClient;
+const dotenv=require('dotenv');
+dotenv.config();
+const connection_url=`mongodb+srv://${process.env.user_name}:${process.env.password}@cluster0.a42g8hw.mongodb.net/?retryWrites=true&w=majority`
+console.log(connection_url);
 
 app.get('/find-by-name',(req,res)=>{
     var name=req.query.name;
@@ -10,7 +12,7 @@ app.get('/find-by-name',(req,res)=>{
     {
         '$search': {
         'text': {
-            'query': 'Ronaldo', 
+            'query': name, 
             'path': 'short_name'
         }
         }
@@ -22,15 +24,18 @@ app.get('/find-by-name',(req,res)=>{
         '$limit': 5
     }
     ];
+    
+    MongoClient.connect(connection_url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db('hackathon-dbs');
+        dbo.collection('fifa_20_players').aggregate(agg).toArray(function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+            db.close();
+        });
+    });
 
-    MongoClient.connect(
-    '',
-    { useNewUrlParser: true, useUnifiedTopology: true }
-    );
-    const coll = client.db('').collection('');
-    const cursor = coll.aggregate(agg);
-    const result = await cursor.toArray();
-    await client.close();
 });
 
 const port=process.env.PORT || 8000;
