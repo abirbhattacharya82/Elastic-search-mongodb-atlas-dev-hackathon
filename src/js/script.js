@@ -1,5 +1,10 @@
 const search=document.getElementById('search');
 search.addEventListener('keyup',()=>{
+    // remove childs of suggestions
+    const suggestions=document.getElementById('suggestions');
+    while(suggestions.firstChild){
+        suggestions.removeChild(suggestions.firstChild);
+    }
     let results = [];
     let input = search.value;
     if (input.length) {
@@ -7,9 +12,35 @@ search.addEventListener('keyup',()=>{
         return item.toLowerCase().includes(input.toLowerCase());
         });
     }
-    console.log(results);
+    // console.log(results);
     
+    var i=0;
+    while(i<5)
+    {
+        if(results.length==i)
+        {
+            break;
+        }
+        else
+        {
+            var x=results[i];
+            var child=document.createElement("div");
+            child.setAttribute("class","player");
+            child.setAttribute("id","id_"+x);
+            var j="replace_name('id_"+x+"')";
+            child.setAttribute("onclick",j);
+            child.innerHTML=x;
+            document.getElementById("suggestions").appendChild(child);
+        }
+        i++;
+    }
 });
+function replace_name(var_id)
+{
+    var x=document.getElementById(var_id).innerHTML;
+    document.getElementById("search").value=x;
+    document.getElementById("suggestions").innerHTML="";
+}
 const data=[
     'L. Messi',
     'Cristiano Ronaldo',

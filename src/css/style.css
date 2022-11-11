@@ -3,3 +3,60 @@
     margin: 0%;
     padding: 0%;
 }
+body
+{
+    background-color: green;
+}
+.search_area
+{
+    width: 100%;
+    
+}
+.search_area .input
+{
+    display: flex;
+    justify-content: center;
+}
+.search_area .input input
+{
+    font-size: 120%;
+    outline: none;
+    padding: 1%;
+    border: none;
+    background-color: rgba(255,255,255,0.8);
+    border-top-left-radius: 5px;
+    width: 40%;
+}
+.search_area .input button
+{
+    width: 3%;
+    border: none;
+    background-color: rgba(255,255,255,0.8);
+    padding: 0.3%;
+    border-top-right-radius: 5px;
+}
+.search_area .input button img
+{
+    width: 100%;
+}
+.center-sugg
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.center-sugg .suggestions
+{
+    width: 45%;
+    background-color: white;
+    font-size: 120%;
+}
+.center-sugg .suggestions .player
+{
+    padding: 1%;
+}
+.center-sugg .suggestions .player:hover
+{
+    background-color: blue;
+    color: white;
+}
