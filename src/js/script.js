@@ -1,5 +1,6 @@
 const search=document.getElementById('search');
 search.addEventListener('keyup',()=>{
+    document.getElementById("suggestions").style.display="block";
     // remove childs of suggestions
     const suggestions=document.getElementById('suggestions');
     while(suggestions.firstChild){
@@ -43,6 +44,7 @@ function replace_name(var_id)
 }
 function generate()
 {
+    document.getElementById("suggestions").style.display="none";
     // clearing all childs inside list
     const list=document.getElementById('list');
     while(list.firstChild){
