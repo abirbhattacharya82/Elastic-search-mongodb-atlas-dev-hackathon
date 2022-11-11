@@ -60,3 +60,28 @@ body
     background-color: blue;
     color: white;
 }
+.List
+{
+    display: flex;
+    justify-content: center;
+}
+.single
+{
+    margin: 5%;
+    padding-top: 1%;
+    background-image: linear-gradient(rgba(238, 255, 0, 0.829),rgb(128, 87, 0));
+    text-align: center;
+    width: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    clip-path: polygon(0% 0%, 100% 0, 100% 73%, 50% 100%, 0 73%);
+}
+.single .name
+{
+    font-size: 200%;
+}
+.single .overall
+{
+    font-size: 300%;   
+}

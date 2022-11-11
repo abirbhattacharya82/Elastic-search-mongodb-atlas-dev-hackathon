@@ -41,6 +41,61 @@ function replace_name(var_id)
     document.getElementById("search").value=x;
     document.getElementById("suggestions").innerHTML="";
 }
+function generate()
+{
+    fetch('https://lazy-ruby-mackerel-hem.cyclic.app/find-by-name?name=').then((response) => {
+        return response.json();
+    }).then((data) => {
+        console.log(data);
+        for(var i=0;i<data.length;i++)
+        {
+            var x=data[i];
+
+            var child=document.createElement("div");
+            child.setAttribute("class","single");
+            child.setAttribute("id",x.sofifa_id);
+
+            const name=document.createElement("div");
+            name.setAttribute("class","name");
+            name.innerHTML=x.short_name;
+
+            const overall=document.createElement("div");
+            overall.setAttribute("class","overall");
+            overall.innerHTML=x.overall;
+
+            const details=document.createElement("div");
+            details.setAttribute("class","details");
+            details.setAttribute("id","detail_"+x.sofifa_id);
+
+            const nationality=document.createElement("div");
+            nationality.setAttribute("class","nationality");
+            nationality.innerHTML=x.nationality;
+
+            const club=document.createElement("div");
+            club.setAttribute("class","club");
+            club.innerHTML=x.club;
+
+            const age=document.createElement("div");
+            age.setAttribute("class","age");
+            age.innerHTML="Age: "+x.age;
+
+            const height=document.createElement("div");
+            height.setAttribute("class","height");
+            height.innerHTML="Height: "+x.height_cm+" cm";
+
+            document.getElementById('detail_'+x.sofifa_id).appendChild(nationality);
+            document.getElementById('detail_'+x.sofifa_id).appendChild(club);
+            document.getElementById('detail_'+x.sofifa_id).appendChild(age);
+            document.getElementById('detail_'+x.sofifa_id).appendChild(height);
+
+            child.appendChild(name);
+            child.appendChild(overall);
+            child.appendChild(details);
+
+            document.getElementById('list').appendChild(child);
+        }
+    });
+}
 const data=[
     'L. Messi',
     'Cristiano Ronaldo',
