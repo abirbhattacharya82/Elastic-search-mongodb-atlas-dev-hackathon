@@ -10,7 +10,6 @@ body
 .search_area
 {
     width: 100%;
-    
 }
 .search_area .input
 {
@@ -41,6 +40,8 @@ body
 }
 .center-sugg
 {
+    position:absolute;
+    z-index: 1;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -63,11 +64,12 @@ body
 .List
 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .single
 {
-    margin: 5%;
+    margin: 1%;
     padding-top: 1%;
     background-image: linear-gradient(rgba(238, 255, 0, 0.829),rgb(128, 87, 0));
     text-align: center;

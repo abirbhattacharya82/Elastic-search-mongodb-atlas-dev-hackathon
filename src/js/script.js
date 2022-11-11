@@ -43,11 +43,18 @@ function replace_name(var_id)
 }
 function generate()
 {
+    // clearing all childs inside list
+    const list=document.getElementById('list');
+    while(list.firstChild){
+        list.removeChild(list.firstChild);
+    }
+
     const url='https://lazy-ruby-mackerel-hem.cyclic.app/find-by-name?name='+document.getElementById("search").value;
-    fetch(url,{mode: 'no-cors',}).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log(data);
+    
+    fetch(url)
+    .then(detail=>detail.json())
+    .then(data=>{
+        
         for(var i=0;i<data.length;i++)
         {
             var x=data[i];
@@ -84,10 +91,10 @@ function generate()
             height.setAttribute("class","height");
             height.innerHTML="Height: "+x.height_cm+" cm";
 
-            document.getElementById('detail_'+x.sofifa_id).appendChild(nationality);
-            document.getElementById('detail_'+x.sofifa_id).appendChild(club);
-            document.getElementById('detail_'+x.sofifa_id).appendChild(age);
-            document.getElementById('detail_'+x.sofifa_id).appendChild(height);
+            details.appendChild(nationality);
+            details.appendChild(club);
+            details.appendChild(age);
+            details.appendChild(height);
 
             child.appendChild(name);
             child.appendChild(overall);

@@ -23,7 +23,7 @@ app.get('/find-by-name', (req, res) => {
                 'overall': -1
             }
         }, {
-            '$limit': 5
+            '$limit': 4
         }
     ];
 
