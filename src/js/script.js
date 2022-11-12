@@ -41,10 +41,13 @@ function replace_name(var_id)
     var x=document.getElementById(var_id).innerHTML;
     document.getElementById("search").value=x;
     document.getElementById("suggestions").innerHTML="";
+    generate();
 }
 function generate()
 {
     document.getElementById("suggestions").style.display="none";
+    document.getElementById("suggestions").innerHTML="";
+
     // clearing all childs inside list
     const list=document.getElementById('list');
     while(list.firstChild){
@@ -56,10 +59,9 @@ function generate()
     fetch(url)
     .then(detail=>detail.json())
     .then(data=>{
-        
-        for(var i=0;i<data.length;i++)
+        if(data[0].short_name==document.getElementById("search").value)
         {
-            var x=data[i];
+            var x=data[0];
 
             var child=document.createElement("div");
             child.setAttribute("class","single");
@@ -104,8 +106,69 @@ function generate()
 
             document.getElementById('list').appendChild(child);
         }
+        else
+        {
+            for(var i=0;i<data.length;i++)
+            {
+                var x=data[i];
+
+                var child=document.createElement("div");
+                child.setAttribute("class","single");
+                child.setAttribute("id",x.sofifa_id);
+
+                const name=document.createElement("div");
+                name.setAttribute("class","name");
+                name.innerHTML=x.short_name;
+
+                const overall=document.createElement("div");
+                overall.setAttribute("class","overall");
+                overall.innerHTML=x.overall;
+
+                const details=document.createElement("div");
+                details.setAttribute("class","details");
+                details.setAttribute("id","detail_"+x.sofifa_id);
+
+                const nationality=document.createElement("div");
+                nationality.setAttribute("class","nationality");
+                nationality.innerHTML=x.nationality;
+
+                const club=document.createElement("div");
+                club.setAttribute("class","club");
+                club.innerHTML=x.club;
+
+                const age=document.createElement("div");
+                age.setAttribute("class","age");
+                age.innerHTML="Age: "+x.age;
+
+                const height=document.createElement("div");
+                height.setAttribute("class","height");
+                height.innerHTML="Height: "+x.height_cm+" cm";
+
+                details.appendChild(nationality);
+                details.appendChild(club);
+                details.appendChild(age);
+                details.appendChild(height);
+
+                child.appendChild(name);
+                child.appendChild(overall);
+                child.appendChild(details);
+
+                document.getElementById('list').appendChild(child);
+            }
+        }
+        
     });
 }
+document.getElementById('search').addEventListener('keypress',function(e){
+    if(e.key==='Enter')
+    {
+        // remove suggestion box
+        document.getElementById("suggestions").style.display="none";
+        document.getElementById("suggestions").innerHTML="";
+        
+        generate();
+    }
+});
 const data=[
     'L. Messi',
     'Cristiano Ronaldo',
