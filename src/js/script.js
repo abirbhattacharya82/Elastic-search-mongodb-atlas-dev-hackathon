@@ -13,7 +13,6 @@ search.addEventListener('keyup',()=>{
         return item.toLowerCase().includes(input.toLowerCase());
         });
     }
-    // console.log(results);
     
     var i=0;
     while(i<5)
@@ -45,6 +44,8 @@ function replace_name(var_id)
 }
 function generate()
 {
+    document.getElementById('loader').style.display="block";
+
     document.getElementById("suggestions").style.display="none";
     document.getElementById("suggestions").innerHTML="";
 
@@ -59,6 +60,7 @@ function generate()
     fetch(url)
     .then(detail=>detail.json())
     .then(data=>{
+        document.getElementById('loader').style.display="none";
         if(data[0].short_name==document.getElementById("search").value)
         {
             var x=data[0];

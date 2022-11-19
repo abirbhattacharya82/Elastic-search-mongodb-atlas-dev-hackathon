@@ -1,77 +1,76 @@
-*
-{
+* {
     margin: 0%;
     padding: 0%;
 }
-body
-{
+
+body {
     background-color: green;
 }
-.search_area
-{
+
+.search_area {
     width: 100%;
 }
-.search_area .input
-{
+
+.search_area .input {
     display: flex;
     justify-content: center;
 }
-.search_area .input input
-{
+
+.search_area .input input {
     font-size: 120%;
     outline: none;
     padding: 1%;
     border: none;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     border-top-left-radius: 5px;
     width: 40%;
 }
-.search_area .input button
-{
+
+.search_area .input button {
     width: 3%;
     border: none;
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 0.3%;
     border-top-right-radius: 5px;
 }
-.search_area .input button img
-{
+
+.search_area .input button img {
     width: 100%;
 }
-.center-sugg
-{
-    position:absolute;
+
+.center-sugg {
+    position: absolute;
     z-index: 1;
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.center-sugg .suggestions
-{
+
+.center-sugg .suggestions {
     width: 45%;
     background-color: white;
     font-size: 120%;
 }
-.center-sugg .suggestions .player
-{
+
+.center-sugg .suggestions .player {
     padding: 1%;
 }
-.center-sugg .suggestions .player:hover
-{
+
+.center-sugg .suggestions .player:hover {
     background-color: blue;
     color: white;
 }
-.List
-{
+
+.List {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.single
-{
+
+.single {
     margin: 1%;
     padding-top: 1%;
-    background-image: linear-gradient(rgba(238, 255, 0, 0.829),rgb(128, 87, 0));
+    background-image: linear-gradient(rgba(238, 255, 0, 0.829), rgb(128, 87, 0));
     text-align: center;
     width: 10%;
     padding-left: 5%;
@@ -79,11 +78,53 @@ body
     padding-bottom: 5%;
     clip-path: polygon(0% 0%, 100% 0, 100% 73%, 50% 100%, 0 73%);
 }
-.single .name
-{
+
+.single .name {
     font-size: 200%;
 }
-.single .overall
+
+.single .overall {
+    font-size: 300%;
+}
+
+.loader {
+    display: none;
+    margin-top: 5%;
+    border: 1px solid black;
+    border-radius: 50%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 90px;
+    height: 90px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loader .image
 {
-    font-size: 300%;   
+    width: 100%;
+}
+.loader .image img
+{
+    width: 100%;
+    border-radius: 100%;
 }
