@@ -202,6 +202,11 @@ body {
         border-top-left-radius: 5px;
         width: 70%;
     }
+    .center-sugg .suggestions {
+        width: 80%;
+        background-color: white;
+        font-size: 120%;
+    }
 }
 
 @media(max-width:495px)
